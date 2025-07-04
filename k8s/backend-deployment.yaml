@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels: 
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: notes-backend
+        imagePullPolicy: Never
+        ports: 
+          - containerPort: 80
+        volumeMounts:
+        - name: notes-db-storage
+          mountPath: /app/data
+      volumes:
+      - name: notes-db-storage
+        persistentVolumeClaim:
+          claimName: notes-db-pvc
