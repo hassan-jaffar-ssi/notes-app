@@ -34,8 +34,8 @@ jobs:
         tags: notes-backend:latest
         push: false
 
-    - name: Start Minikube
-      run: minikube start --driver=docker
+    # - name: Start Minikube
+    #   run: minikube start --driver=docker
 
     # - name: Show Kubernetes nodes
     #   run: kubectl get nodes
