@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Minikube Setup CI
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v4
@@ -33,3 +33,27 @@ jobs:
         file: ./backend/Dockerfile
         tags: notes-backend:latest
         push: false
+
+    - name: Start Minikube
+      run: minikube start --driver=docker
+
+    # - name: Show Kubernetes nodes
+    #   run: kubectl get nodes
+
+    - name: Apply Configuration Files
+      run: |
+        minikube kubectl apply -f backend-pv.yaml
+        minikube kubectl apply -f backend-deployment.yaml
+        minikube kubectl apply -f frontend-deployment.yaml
+        minikube kubectl apply -f services.yaml
+
+
+    - name: Add ingress in minikube
+      run: |
+        minikube addons enable ingress
+        minikube kubectl apply -f ingress.yaml
+        minikube tunnel
+
+
+
+

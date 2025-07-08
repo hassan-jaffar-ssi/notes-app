@@ -9,7 +9,6 @@ spec:
     - host: notes.local
       http:
         paths:
-          # ✅ Only API path has a rewrite
           - path: /notes
             pathType: Prefix
             backend:
@@ -18,7 +17,6 @@ spec:
                 port:
                   number: 80
 
-          # ✅ Frontend — NO rewrite — just forwards everything
           - path: /
             pathType: Prefix
             backend:
