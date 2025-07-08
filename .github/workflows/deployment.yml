@@ -42,16 +42,18 @@ jobs:
 
     - name: Apply Configuration Files
       run: |
-        minikube kubectl apply -f backend-pv.yaml
-        minikube kubectl apply -f backend-deployment.yaml
-        minikube kubectl apply -f frontend-deployment.yaml
-        minikube kubectl apply -f services.yaml
+        ls
+        cd k8s
+        minikube kubectl -- apply -f backend-pv.yaml
+        minikube kubectl -- apply -f backend-deployment.yaml
+        minikube kubectl -- apply -f frontend-deployment.yaml
+        minikube kubectl -- apply -f services.yaml
 
 
     - name: Add ingress in minikube
       run: |
         minikube addons enable ingress
-        minikube kubectl apply -f ingress.yaml
+        minikube kubectl -- apply -f ingress.yaml
         minikube tunnel
 
 
