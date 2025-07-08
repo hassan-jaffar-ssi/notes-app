@@ -52,6 +52,7 @@ jobs:
 
     - name: Add ingress in minikube
       run: |
+        cd k8s
         minikube addons enable ingress
         minikube kubectl -- apply -f ingress.yaml
         minikube tunnel
