@@ -21,3 +21,44 @@ venv
 __pychache__
 
 notes.db
+
+
+# Node.js (React frontend)
+frontend/node_modules/
+frontend/build/
+frontend/.env
+
+# Python (FastAPI backend)
+backend/venv/
+backend/__pycache__/
+backend/.env
+
+# Docker
+*.tar
+*.log
+
+# Kubernetes backups and generated files
+k8s/*.bak
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.*
+terraform/crash.log
+terraform/.terraform.tfvars.json
+
+# Terraform workspace state overrides
+terraform/*.tfstate.backup
+terraform/.terraformrc
+
+# Env and var files (optional, if sensitive)
+terraform/workspace_vars/*.tfvars
+
+# IDE/editor files
+*.swp
+*.swo
+.vscode/
+.idea/
+.DS_Store
+
