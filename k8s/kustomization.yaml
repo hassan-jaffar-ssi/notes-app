@@ -1,0 +1,6 @@
+resources:
+  - backend-pv.yaml
+  - frontend-deployment.yaml
+  - backend-deployment.yaml
+  - services.yaml
+  - ingress.yaml
